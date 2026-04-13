@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace prakt15_Savitsin
 {
-    class Room
+    public class Room
     {
-        static List<Room> RoomList = new List<Room>();
+        static public List<Room> RoomList = new List<Room>();
 
         double lengthRoom;
         double widthRoom;
@@ -69,20 +69,20 @@ namespace prakt15_Savitsin
         {
             return lengthRoom * widthRoom * heightRoom;
         }
-        static public void RoomInfo(Room room) //Информация о комнате
+        static public string RoomInfo(Room room) //Информация о комнате
         {
-            Console.WriteLine($"Длина комнаты: {room.lengthRoom}. Ширина комнаты: {room.widthRoom}. Высота комнаты: {room.heightRoom}." +
-                $"Количество окон: {room.countWindow}. Высота окон: {room.heightWindow}. Ширина окон: {room.widthWindow}");
+            return $"Длина комнаты: {room.lengthRoom} Ширина комнаты: {room.widthRoom} Высота комнаты: {room.heightRoom} Количество окон: {room.countWindow} Высота окон: {room.heightWindow} Ширина окон: {room.widthWindow}";
         }
-        static public void ListRoomInfo()
+        static public List<string> ListRoomInfo()
         {
+            List<string> room = new List<string>();
             foreach (var item in RoomList)
             {
-                Console.WriteLine($"Длина комнаты: {item.lengthRoom}. Ширина комнаты: {item.widthRoom}. Высота комнаты: {item.heightRoom}." +
-                $"Количество окон: {item.countWindow}. Высота окон: {item.heightWindow}. Ширина окон: {item.widthWindow}");
+                room.Add($"Длина комнаты: {item.lengthRoom} Ширина комнаты: {item.widthRoom} Высота комнаты: {item.heightRoom} Количество окон: {item.countWindow} Высота окон: {item.heightWindow} Ширина окон: {item.widthWindow}");
             }
+            return room;
         }
-        static public void RepairRoom(Room room) //Количество рулонов обоев
+        static public string RepairRoom(Room room) //Количество рулонов обоев (для консоли)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace prakt15_Savitsin
                 double widthRoll = Convert.ToDouble(Console.ReadLine());
                 if (widthRoll <= 0.0)
                 {
-                    Console.WriteLine("Ширина рулона не может быть <= 0");
+                    return "Ширина рулона не может быть <= 0";
                 }
                 else
                 {
@@ -104,16 +104,29 @@ namespace prakt15_Savitsin
                     double countRoll1 = AreaWallsRoom / AreaRoll1;
                     double countRoll2 = AreaWallsRoom / AreaRoll2;
 
-                    Console.WriteLine($"Рулон: длина = 10, ширина = {widthRoll}");
-                    Console.WriteLine($"Количество рулонов: {countRoll1}");
-                    Console.WriteLine($"Рулон: длина = 15, ширина = {widthRoll}");
-                    Console.WriteLine($"Количество рулонов: {countRoll2}");
+                    return $"Рулон: длина = 10 ширина = {widthRoll}\n" + $"Количество рулонов: {countRoll1}\n" 
+                        + $"Рулон: длина = 15 ширина = {widthRoll}\n" + $"Количество рулонов: {countRoll2}\n";
                 }
             }
             catch
             {
-                Console.WriteLine("Неверный формат значения");
+                return "Неверный формат значения";
             }
+        }
+        static public string RepairRoom(double width, Room room) //Количество рулонов обоев (для форма)
+        {
+            double wall1 = room.heightRoom * room.lengthRoom;
+            double wall2 = room.heightRoom * room.widthRoom;
+            double AreaWallsRoom = 2 * (wall1 + wall2);
+
+            double AreaRoll1 = 10 * width;
+            double AreaRoll2 = 15 * width;
+
+            double countRoll1 = AreaWallsRoom / AreaRoll1;
+            double countRoll2 = AreaWallsRoom / AreaRoll2;
+
+            return $"Рулон: длина = 10 ширина = {width} " + $"Количество рулонов: {countRoll1} "
+                + $"Рулон: длина = 15 ширина = {width} " + $"Количество рулонов: {countRoll2}";
         }
         static public double AreaAllWindow() //Площадь всех окон
         {
