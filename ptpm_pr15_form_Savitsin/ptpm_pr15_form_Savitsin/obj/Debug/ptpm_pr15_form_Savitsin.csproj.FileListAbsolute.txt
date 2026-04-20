@@ -1,0 +1,14 @@
+D:\Савицин ПР-21\ptpm_pr15_form_Savitsin\bin\Debug\ptpm_pr15_form_Savitsin.exe.config
+D:\Савицин ПР-21\ptpm_pr15_form_Savitsin\bin\Debug\ptpm_pr15_form_Savitsin.exe
+D:\Савицин ПР-21\ptpm_pr15_form_Savitsin\bin\Debug\ptpm_pr15_form_Savitsin.pdb
+D:\Савицин ПР-21\ptpm_pr15_form_Savitsin\bin\Debug\prakt15_Savitsin.exe
+D:\Савицин ПР-21\ptpm_pr15_form_Savitsin\bin\Debug\prakt15_Savitsin.pdb
+D:\Савицин ПР-21\ptpm_pr15_form_Savitsin\bin\Debug\prakt15_Savitsin.exe.config
+D:\Савицин ПР-21\ptpm_pr15_form_Savitsin\obj\Debug\ptpm_pr15_form_Savitsin.csproj.AssemblyReference.cache
+D:\Савицин ПР-21\ptpm_pr15_form_Savitsin\obj\Debug\ptpm_pr15_form_Savitsin.Form1.resources
+D:\Савицин ПР-21\ptpm_pr15_form_Savitsin\obj\Debug\ptpm_pr15_form_Savitsin.Properties.Resources.resources
+D:\Савицин ПР-21\ptpm_pr15_form_Savitsin\obj\Debug\ptpm_pr15_form_Savitsin.csproj.GenerateResource.cache
+D:\Савицин ПР-21\ptpm_pr15_form_Savitsin\obj\Debug\ptpm_pr15_form_Savitsin.csproj.CoreCompileInputs.cache
+D:\Савицин ПР-21\ptpm_pr15_form_Savitsin\obj\Debug\ptpm_pr1.7C010F46.Up2Date
+D:\Савицин ПР-21\ptpm_pr15_form_Savitsin\obj\Debug\ptpm_pr15_form_Savitsin.exe
+D:\Савицин ПР-21\ptpm_pr15_form_Savitsin\obj\Debug\ptpm_pr15_form_Savitsin.pdb
