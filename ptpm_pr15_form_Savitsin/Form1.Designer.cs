@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtLengthRoom = new System.Windows.Forms.TextBox();
             this.txtWidthRoom = new System.Windows.Forms.TextBox();
@@ -44,18 +44,21 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnLoadFromFile2 = new System.Windows.Forms.Button();
+            this.btnBinding = new System.Windows.Forms.Button();
+            this.btnLoadFromFile1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Location = new System.Drawing.Point(45, 428);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(236, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Создать комнату";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAdd.Location = new System.Drawing.Point(45, 428);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(236, 23);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Создать комнату";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label1
             // 
@@ -177,11 +180,44 @@
             this.dataGridView1.Size = new System.Drawing.Size(638, 351);
             this.dataGridView1.TabIndex = 29;
             // 
+            // btnLoadFromFile2
+            // 
+            this.btnLoadFromFile2.Location = new System.Drawing.Point(587, 428);
+            this.btnLoadFromFile2.Name = "btnLoadFromFile2";
+            this.btnLoadFromFile2.Size = new System.Drawing.Size(136, 41);
+            this.btnLoadFromFile2.TabIndex = 30;
+            this.btnLoadFromFile2.Text = "Загрузить из файла (способ 2)";
+            this.btnLoadFromFile2.UseVisualStyleBackColor = true;
+            this.btnLoadFromFile2.Click += new System.EventHandler(this.btnLoadFromFile2_Click);
+            // 
+            // btnBinding
+            // 
+            this.btnBinding.Location = new System.Drawing.Point(748, 428);
+            this.btnBinding.Name = "btnBinding";
+            this.btnBinding.Size = new System.Drawing.Size(161, 41);
+            this.btnBinding.TabIndex = 31;
+            this.btnBinding.Text = "Загрузить из файла (binding способ 3)";
+            this.btnBinding.UseVisualStyleBackColor = true;
+            this.btnBinding.Click += new System.EventHandler(this.btnBinding_Click);
+            // 
+            // btnLoadFromFile1
+            // 
+            this.btnLoadFromFile1.Location = new System.Drawing.Point(432, 428);
+            this.btnLoadFromFile1.Name = "btnLoadFromFile1";
+            this.btnLoadFromFile1.Size = new System.Drawing.Size(126, 41);
+            this.btnLoadFromFile1.TabIndex = 32;
+            this.btnLoadFromFile1.Text = "Загрузить из файла (Способ 1)";
+            this.btnLoadFromFile1.UseVisualStyleBackColor = true;
+            this.btnLoadFromFile1.Click += new System.EventHandler(this.btnLoadFromFile1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1241, 659);
+            this.Controls.Add(this.btnLoadFromFile1);
+            this.Controls.Add(this.btnBinding);
+            this.Controls.Add(this.btnLoadFromFile2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txtWidthRoll);
             this.Controls.Add(this.txtWidthWindow);
@@ -197,7 +233,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAdd);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -207,7 +243,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtLengthRoom;
         private System.Windows.Forms.TextBox txtWidthRoom;
@@ -223,6 +259,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnLoadFromFile2;
+        private System.Windows.Forms.Button btnBinding;
+        private System.Windows.Forms.Button btnLoadFromFile1;
     }
 }
 

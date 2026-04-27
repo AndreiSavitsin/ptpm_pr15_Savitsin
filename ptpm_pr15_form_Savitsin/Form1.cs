@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel;
 using prakt15_Savitsin;
 
 namespace ptpm_pr15_form_Savitsin
@@ -18,117 +19,153 @@ namespace ptpm_pr15_form_Savitsin
         public Form1()
         {
             InitializeComponent();
-            LoadFromFile();
-            FillDataGrid();
-        }
 
-        private void LoadFromFile() //Загрузка из текстового файла
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+
+            DataGridViewTextBoxColumn column1 = new DataGridViewTextBoxColumn() { Name = "lengthRoom", HeaderText = "Длина комнаты" };
+            DataGridViewTextBoxColumn column2 = new DataGridViewTextBoxColumn() { Name = "widthRoom", HeaderText = "Ширина комнаты" };
+            DataGridViewTextBoxColumn column3 = new DataGridViewTextBoxColumn() { Name = "heightRoom", HeaderText = "Высота комнаты" };
+            DataGridViewTextBoxColumn column4 = new DataGridViewTextBoxColumn() { Name = "countWindow", HeaderText = "Количество окон" };
+            DataGridViewTextBoxColumn column5 = new DataGridViewTextBoxColumn() { Name = "heightWindow", HeaderText = "Высота окон" };
+            DataGridViewTextBoxColumn column6 = new DataGridViewTextBoxColumn() { Name = "widthWindow", HeaderText = "Ширина окон" };
+
+            dataGridView1.Columns.AddRange(new DataGridViewTextBoxColumn[] { column1, column2, column3, column4, column5, column6 });
+        }
+        private void LoadFromFile1() // Зашрузка из текстового файла в datagrid (Способ 1)
         {
-            using (StreamReader sr = new StreamReader(filePath))
+            if (File.Exists(filePath))
             {
-                while (!sr.EndOfStream)
+                using (StreamReader sr = new StreamReader(filePath))
                 {
-                    string str = sr.ReadLine();
-                    string[] parts = str.Split(' ');
-                    Room room = new Room(0, 0, 0, 0, 0, 0);
-                    if (!double.TryParse(parts[2], out double lengthRoom))
+                    while (!sr.EndOfStream)
                     {
-                        room.LengthRoom = 5.0;
+                        string line = sr.ReadLine();
+                        string[] parts = line.Split(' ');
+
+                        dataGridView1.Rows.Add(parts[2], parts[5], parts[8], parts[11], parts[14], parts[17]);
                     }
-                    else
+                }
+            }
+            else
+            {
+                MessageBox.Show("Текстовый файл не найден");
+            }
+        }
+        private void LoadFromFile2() //Загрузка из текстового файла в list (Способ 2)
+        {
+            if (File.Exists(filePath))
+            {
+                using (StreamReader sr = new StreamReader(filePath))
+                {
+                    while (!sr.EndOfStream)
                     {
-                        if (lengthRoom <= 0)
+                        string str = sr.ReadLine();
+                        string[] parts = str.Split(' ');
+                        Room room = new Room(0, 0, 0, 0, 0, 0);
+                        if (!double.TryParse(parts[2], out double lengthRoom))
                         {
                             room.LengthRoom = 5.0;
                         }
                         else
                         {
-                            room.LengthRoom = lengthRoom;
+                            if (lengthRoom <= 0)
+                            {
+                                room.LengthRoom = 5.0;
+                            }
+                            else
+                            {
+                                room.LengthRoom = lengthRoom;
+                            }
                         }
-                    }
 
-                    if (!double.TryParse(parts[5], out double widthRoom))
-                    {
-                        room.WidthRoom = 5.0;
-                    }
-                    else
-                    {
-                        if (widthRoom <= 0)
+                        if (!double.TryParse(parts[5], out double widthRoom))
                         {
                             room.WidthRoom = 5.0;
                         }
                         else
                         {
-                            room.WidthRoom = widthRoom;
+                            if (widthRoom <= 0)
+                            {
+                                room.WidthRoom = 5.0;
+                            }
+                            else
+                            {
+                                room.WidthRoom = widthRoom;
+                            }
                         }
-                    }
 
-                    if (!double.TryParse(parts[8], out double heightRoom))
-                    {
-                        room.HeightRoom = 5.0;
-                    }
-                    else
-                    {
-                        if (heightRoom <= 0)
+                        if (!double.TryParse(parts[8], out double heightRoom))
                         {
                             room.HeightRoom = 5.0;
                         }
                         else
                         {
-                            room.HeightRoom = heightRoom;
+                            if (heightRoom <= 0)
+                            {
+                                room.HeightRoom = 5.0;
+                            }
+                            else
+                            {
+                                room.HeightRoom = heightRoom;
+                            }
                         }
-                    }
 
-                    if (!int.TryParse(parts[11], out int countWindow))
-                    {
-                        room.CountWindow = 1;
-                    }
-                    else
-                    {
-                        if (countWindow <= 0)
+                        if (!int.TryParse(parts[11], out int countWindow))
                         {
                             room.CountWindow = 1;
                         }
                         else
                         {
-                            room.CountWindow = countWindow;
+                            if (countWindow <= 0)
+                            {
+                                room.CountWindow = 1;
+                            }
+                            else
+                            {
+                                room.CountWindow = countWindow;
+                            }
                         }
-                    }
 
-                    if (!double.TryParse(parts[14], out double heightWindow))
-                    {
-                        room.HeightWindow = 2;
-                    }
-                    else
-                    {
-                        if (heightWindow <= 0)
+                        if (!double.TryParse(parts[14], out double heightWindow))
                         {
                             room.HeightWindow = 2;
                         }
                         else
                         {
-                            room.HeightWindow = heightWindow;
+                            if (heightWindow <= 0)
+                            {
+                                room.HeightWindow = 2;
+                            }
+                            else
+                            {
+                                room.HeightWindow = heightWindow;
+                            }
                         }
-                    }
 
-                    if (!double.TryParse(parts[17], out double widthWindow))
-                    {
-                        room.WidthWindow = 2;
-                    }
-                    else
-                    {
-                        if (widthWindow <= 0)
+                        if (!double.TryParse(parts[17], out double widthWindow))
                         {
                             room.WidthWindow = 2;
                         }
                         else
                         {
-                            room.WidthWindow = widthWindow;
+                            if (widthWindow <= 0)
+                            {
+                                room.WidthWindow = 2;
+                            }
+                            else
+                            {
+                                room.WidthWindow = widthWindow;
+                            }
                         }
-                    }
 
-                    Room.RoomList.Add(room);
+                        Room.RoomList.Add(room);
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Текстовый файл не найден");
             }
         }
         private void FillDataGrid() //Заполнение dataGridView
@@ -145,7 +182,6 @@ namespace ptpm_pr15_form_Savitsin
 
             dataGridView1.Columns.AddRange(new DataGridViewTextBoxColumn[] { column1, column2, column3, column4, column5, column6});
 
-
             for (int i = 0; i < Room.RoomList.Count; i++)
             {
                 dataGridView1.Rows.Add();
@@ -157,7 +193,8 @@ namespace ptpm_pr15_form_Savitsin
                 dataGridView1[5, i].Value = Room.RoomList[i].WidthWindow;
             }
         }
-        private void button1_Click(object sender, EventArgs e) //Кнопка создать комнату
+
+        private void btnAdd_Click(object sender, EventArgs e) //Кнопка создать комнату
         {
             Room room = new Room(0, 0, 0, 0, 0, 0);
             if (!double.TryParse(txtLengthRoom.Text, out double lengthRoom))
@@ -276,6 +313,28 @@ namespace ptpm_pr15_form_Savitsin
             MessageBox.Show($"Площадь всех окон: {info2}", "Информация о площади", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Room.FillInfo();
+        }
+
+        private void btnBinding_Click(object sender, EventArgs e) //Кнопка загрузить из файла (binding)
+        {
+            LoadFromFile2();
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+
+            BindingList<Room> bindingList = new BindingList<Room>(Room.RoomList);
+
+            dataGridView1.DataSource = bindingList;
+        }
+
+        private void btnLoadFromFile2_Click(object sender, EventArgs e) //Кнопка загрузить из файла (Способ 2)
+        {
+            LoadFromFile2();
+            FillDataGrid();
+        }
+
+        private void btnLoadFromFile1_Click(object sender, EventArgs e) //Кнопка загрузить из файла (Способ 1)
+        {
+            LoadFromFile1();
         }
     }
 }
